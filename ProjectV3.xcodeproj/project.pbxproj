@@ -18,6 +18,7 @@
 		F0C6DBCA1F571655004DC2C0 /* ProjectV3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6DBC91F571655004DC2C0 /* ProjectV3Tests.swift */; };
 		F0C6DBD51F571655004DC2C0 /* ProjectV3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6DBD41F571655004DC2C0 /* ProjectV3UITests.swift */; };
 		F0C6DBE41F571B26004DC2C0 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6DBE31F571B26004DC2C0 /* LoginController.swift */; };
+		F0C6DBE81F5AF95C004DC2C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0C6DBE71F5AF95C004DC2C0 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		F0C6DBD41F571655004DC2C0 /* ProjectV3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectV3UITests.swift; sourceTree = "<group>"; };
 		F0C6DBD61F571655004DC2C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0C6DBE31F571B26004DC2C0 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		F0C6DBE71F5AF95C004DC2C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 		F0C6DBB31F571655004DC2C0 /* ProjectV3 */ = {
 			isa = PBXGroup;
 			children = (
+				F0C6DBE71F5AF95C004DC2C0 /* GoogleService-Info.plist */,
 				F0C6DBE21F571ACA004DC2C0 /* Controller */,
 				F0C6DBB41F571655004DC2C0 /* AppDelegate.swift */,
 				F0C6DBB81F571655004DC2C0 /* Main.storyboard */,
@@ -293,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0C6DBBF1F571655004DC2C0 /* LaunchScreen.storyboard in Resources */,
+				F0C6DBE81F5AF95C004DC2C0 /* GoogleService-Info.plist in Resources */,
 				F0C6DBBC1F571655004DC2C0 /* Assets.xcassets in Resources */,
 				F0C6DBBA1F571655004DC2C0 /* Main.storyboard in Resources */,
 			);
@@ -451,12 +455,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ProjectV3/Pods-ProjectV3-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
