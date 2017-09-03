@@ -61,7 +61,7 @@ class LoginController: UIViewController {
     
     let passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Password(more than 6 characters)"
+        textField.placeholder = "Password(more than 8 characters)"
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.isSecureTextEntry = true
         return textField
@@ -142,29 +142,36 @@ class LoginController: UIViewController {
             print("Form is not valid")
             return
         }
-        if password == confirm {
-            Auth.auth().createUser(withEmail: email, password: password, completion: {(user: User?, error) in
-                if let err = error {
-                    print(err)
-                    return
-                }
-                guard let uid = user?.uid else {
-                    return
-                }
-                let ref = Database.database().reference(fromURL: "https://projectv3-182cb.firebaseio.com/")
-                let values = ["name": name, "email": email]
-                let userRef = ref.child("users").child((uid))
-                userRef.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                    if err != nil {
-                        print(err ?? "")
+        let isEmailValid = isValidEmailAddress(emailAddressString: email)
+        let isPasswordValid = isValidPassword(password : password)
+        if isEmailValid && isPasswordValid {
+            print("Email address or Password is valid")
+            if password == confirm {
+                Auth.auth().createUser(withEmail: email, password: password, completion: {(user: User?, error) in
+                    if let err = error {
+                        print(err)
                         return
                     }
-                    print("Saved user successfully into Firebase Database")
-                    self.dismiss(animated: true, completion: nil)
+                    guard let uid = user?.uid else {
+                        return
+                    }
+                    let ref = Database.database().reference(fromURL: "https://projectv3-182cb.firebaseio.com/")
+                    let values = ["name": name, "email": email]
+                    let userRef = ref.child("users").child((uid))
+                    userRef.updateChildValues(values, withCompletionBlock: { (err, ref) in
+                        if err != nil {
+                            print(err ?? "")
+                            return
+                        }
+                        print("Saved user successfully into Firebase Database")
+                        self.dismiss(animated: true, completion: nil)
+                    })
                 })
-            })
+            }
+
+        } else {
+            print("Email address or Password is not valid")
         }
-        
     }
     
     var inputsContrainerViewHeightAnchor: NSLayoutConstraint?
@@ -249,7 +256,11 @@ class LoginController: UIViewController {
             print("Form is not valid")
             return
         }
-        Auth.auth().signIn(withEmail: email, password: password, completion: {(user: User?, error) in
+        let isEmailValid = isValidEmailAddress(emailAddressString: email)
+        let isPasswordValid = isValidPassword(password : password)
+        if isEmailValid && isPasswordValid {
+            print("Email address or Passwrd is valid")
+            Auth.auth().signIn(withEmail: email, password: password, completion: {(user: User?, error) in
                 if error != nil {
                     print(error ?? "")
                     return
@@ -257,6 +268,9 @@ class LoginController: UIViewController {
                 print("Login Successful")
                 self.dismiss(animated: true, completion: nil)
             })
+        } else {
+            print("Email address or Password is not valid")
+        }
     }
     
     func handleLoginRegister() {
@@ -265,6 +279,30 @@ class LoginController: UIViewController {
         } else {
             handleRegister()
         }
+    }
+    
+    func isValidEmailAddress(emailAddressString: String) -> Bool {
+        var returnValue = true
+        let emailRegEx = "[A-Z0-9a-z.-_]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}"
+        do {
+            let regex = try NSRegularExpression(pattern: emailRegEx)
+            let nsString = emailAddressString as NSString
+            let results = regex.matches(in: emailAddressString, range: NSRange(location: 0, length: nsString.length))
+            
+            if results.count == 0
+            {
+                returnValue = false
+            }
+        } catch let error as NSError {
+            print("invalid regex: \(error.localizedDescription)")
+            returnValue = false
+        }
+        return  returnValue
+    }
+    
+    func isValidPassword(password : String) -> Bool{
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
+        return passwordTest.evaluate(with: password)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
