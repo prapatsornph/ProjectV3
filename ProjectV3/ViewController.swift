@@ -20,7 +20,6 @@ class ViewController: UITableViewController {
         
         if Auth.auth().currentUser?.uid == nil {
             perform(#selector(handleLogout), with: nil, afterDelay: 0)
-            self.handleLogout()
         }
     }
     
