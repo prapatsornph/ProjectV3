@@ -15,9 +15,7 @@ class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
-        
         if Auth.auth().currentUser?.uid == nil {
             perform(#selector(handleLogout), with: nil, afterDelay: 0)
         }
@@ -31,6 +29,7 @@ class ViewController: UITableViewController {
         }
         
         let loginController = LoginController()
+        //UINavigationController(rootViewController: LoginController())
         present(loginController, animated: true, completion: nil)
     }
     

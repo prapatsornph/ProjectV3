@@ -21,21 +21,21 @@ class LoginController: UIViewController {
         view.layer.masksToBounds = true
         return view
     }()
-    
     lazy var loginRegisterButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r: 42, g: 94, b: 190)
-        button.setTitle("Login", for: .normal)
+        button.setTitle("Sign In", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.addTarget(self, action: #selector(handleLoginRegister), for: .touchUpInside)
+        button.layer.cornerRadius = 20
+        button.layer.masksToBounds = true
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
     let nameTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Username"
+        textField.placeholder = "Name"
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -61,7 +61,7 @@ class LoginController: UIViewController {
     
     let passwordTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Password(more than 8 characters)"
+        textField.placeholder = "Password"
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.isSecureTextEntry = true
         return textField
@@ -80,15 +80,24 @@ class LoginController: UIViewController {
         textField.isSecureTextEntry = true
         return textField
     }()
+    
     let confirmPassSeparatorFeild: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(r: 220, g: 220, b: 220)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+    let forgotPasswordButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Forgot password?", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
+        button.addTarget(self, action: #selector(handleForgotPassword), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     lazy var loginRegisterSegmentControl: UISegmentedControl = {
-        let segmentControl = UISegmentedControl(items: ["Login", "Register"])
+        let segmentControl = UISegmentedControl(items: ["Sign In", "Sign Up"])
         segmentControl.tintColor = UIColor.white
         segmentControl.selectedSegmentIndex = 0
         segmentControl.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
@@ -102,11 +111,31 @@ class LoginController: UIViewController {
         view.addSubview(inputsContainerView)
         view.addSubview(loginRegisterButton)
         view.addSubview(loginRegisterSegmentControl)
+        view.addSubview(forgotPasswordButton)
+        
+        //UINavigationController = self
+        
         setupLoginRegisterSegmentControl()
         setupInputsContainerView()
         setupLoginRegisterButton()
+        setupForgotPasswordButton()
+    }
+    //function handle
+    func handleForgotPassword() {
+        let forgotPassController = ForgotPasswordController()
+        /*let transition = CATransition()
+        transition.duration = 0.25
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromRight
+        self.view.window!.layer.add(transition, forKey: kCATransition)*/
+        present(forgotPassController, animated: true, completion: nil)
     }
     
+    var inputsContrainerViewHeightAnchor: NSLayoutConstraint?
+    var nameTextFieldHeightAnchor: NSLayoutConstraint?
+    var emailTextFieldHeightAnchor: NSLayoutConstraint?
+    var passwordTextFieldHeightAnchor: NSLayoutConstraint?
+    var confirmPassTextFieldHeightAnchor: NSLayoutConstraint?
     func handleLoginRegisterChange() {
         let title = loginRegisterSegmentControl.titleForSegment(at: loginRegisterSegmentControl.selectedSegmentIndex)
         loginRegisterButton.setTitle(title, for: .normal)
@@ -128,13 +157,8 @@ class LoginController: UIViewController {
         confirmPassTextFieldHeightAnchor? = confirmPassTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: loginRegisterSegmentControl.selectedSegmentIndex == 0 ? 0 : 1/4)
         confirmPassTextFieldHeightAnchor?.isActive = true
         confirmPassTextField.isHidden = loginRegisterSegmentControl.selectedSegmentIndex == 0
-    }
-    
-    func setupLoginRegisterSegmentControl() {
-        loginRegisterSegmentControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        loginRegisterSegmentControl.bottomAnchor.constraint(equalTo: inputsContainerView.topAnchor, constant: -12).isActive = true
-        loginRegisterSegmentControl.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor, multiplier: 0.80).isActive = true
-        loginRegisterSegmentControl.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        forgotPasswordButton.isHidden = loginRegisterSegmentControl.selectedSegmentIndex == 1
     }
     
     func handleRegister() {
@@ -152,34 +176,70 @@ class LoginController: UIViewController {
                         print(err)
                         return
                     }
-                    guard let uid = user?.uid else {
-                        return
-                    }
-                    let ref = Database.database().reference(fromURL: "https://projectv3-182cb.firebaseio.com/")
-                    let values = ["name": name, "email": email]
-                    let userRef = ref.child("users").child((uid))
-                    userRef.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                        if err != nil {
-                            print(err ?? "")
+                Auth.auth().currentUser?.sendEmailVerification { (error) in
+                    self.showAlertButtonTapped(sender: UIButton.init(), message: "Please verify your email.", check: true)
+                }
+                //after sent and verified still false
+                let user = Auth.auth().currentUser
+                if user?.isEmailVerified == true {
+                        guard let uid = user?.uid else {
                             return
                         }
-                        print("Saved user successfully into Firebase Database")
-                        self.dismiss(animated: true, completion: nil)
-                    })
+                        let ref = Database.database().reference(fromURL: "https://projectv3-182cb.firebaseio.com/")
+                        let values = ["name": name, "email": email]
+                        let userRef = ref.child("users").child((uid))
+                        userRef.updateChildValues(values, withCompletionBlock: { (err, ref) in
+                            if err != nil {
+                                print(err ?? "")
+                                return
+                            }
+                            print("Saved user successfully into Firebase Database")
+                            self.dismiss(animated: true, completion: nil)
+                        })
+                    }
                 })
             }
 
         } else {
-            print("Email address or Password is not valid")
+            self.showAlertButtonTapped(sender: UIButton.init(), message: "Your email or password is invalid.\nYour password must have:\n-8 or more than characters\n-At least one number and special character", check: false)
         }
     }
     
-    var inputsContrainerViewHeightAnchor: NSLayoutConstraint?
-    var nameTextFieldHeightAnchor: NSLayoutConstraint?
-    var emailTextFieldHeightAnchor: NSLayoutConstraint?
-    var passwordTextFieldHeightAnchor: NSLayoutConstraint?
-    var confirmPassTextFieldHeightAnchor: NSLayoutConstraint?
+    func handleLogin() {
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            print("Form is not valid")
+            return
+        }
+        let isEmailValid = isValidEmailAddress(emailAddressString: email)
+        let isPasswordValid = isValidPassword(password : password)
+        if isEmailValid && isPasswordValid {
+            print("Email address or Password is valid")
+            //let user = Auth.auth().currentUser
+            //if user?.isEmailVerified == true {
+                Auth.auth().signIn(withEmail: email, password: password, completion: {(user: User?, error) in
+                    if error != nil {
+                        print(error ?? "")
+                        return
+                    }
+                    print("Login Successful")
+                    self.dismiss(animated: true, completion: nil)
+                })
+            //} else {
+                //print("Your email is not verify")
+            //}
+        } else {
+            self.showAlertButtonTapped(sender: UIButton.init(), message: "Your email or password is incorrect.", check: false)
+        }
+    }
     
+    func handleLoginRegister() {
+        if loginRegisterSegmentControl.selectedSegmentIndex == 0 {
+            handleLogin()
+        } else {
+            handleRegister()
+        }
+    }
+    //function set up
     func setupInputsContainerView() {
         inputsContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         inputsContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -241,9 +301,17 @@ class LoginController: UIViewController {
         confirmPassSeparatorFeild.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor).isActive = true
         confirmPassSeparatorFeild.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
         confirmPassSeparatorFeild.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
 
     }
     
+    func setupLoginRegisterSegmentControl() {
+        loginRegisterSegmentControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loginRegisterSegmentControl.bottomAnchor.constraint(equalTo: inputsContainerView.topAnchor, constant: -12).isActive = true
+        loginRegisterSegmentControl.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor, multiplier: 0.80).isActive = true
+        loginRegisterSegmentControl.heightAnchor.constraint(equalToConstant: 30).isActive = true
+    }
+
     func setupLoginRegisterButton() {
         loginRegisterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         loginRegisterButton.topAnchor.constraint(equalTo: inputsContainerView.bottomAnchor, constant: 13).isActive = true
@@ -251,36 +319,13 @@ class LoginController: UIViewController {
         loginRegisterButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
-    func handleLogin() {
-        guard let email = emailTextField.text, let password = passwordTextField.text else {
-            print("Form is not valid")
-            return
-        }
-        let isEmailValid = isValidEmailAddress(emailAddressString: email)
-        let isPasswordValid = isValidPassword(password : password)
-        if isEmailValid && isPasswordValid {
-            print("Email address or Passwrd is valid")
-            Auth.auth().signIn(withEmail: email, password: password, completion: {(user: User?, error) in
-                if error != nil {
-                    print(error ?? "")
-                    return
-                }
-                print("Login Successful")
-                self.dismiss(animated: true, completion: nil)
-            })
-        } else {
-            print("Email address or Password is not valid")
-        }
+    func setupForgotPasswordButton() {
+        forgotPasswordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        forgotPasswordButton.topAnchor.constraint(equalTo: inputsContainerView.bottomAnchor, constant: 55).isActive = true
+        forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
+        forgotPasswordButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
-    
-    func handleLoginRegister() {
-        if loginRegisterSegmentControl.selectedSegmentIndex == 0 {
-            handleLogin()
-        } else {
-            handleRegister()
-        }
-    }
-    
+    //function validation
     func isValidEmailAddress(emailAddressString: String) -> Bool {
         var returnValue = true
         let emailRegEx = "[A-Z0-9a-z.-_]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}"
@@ -301,8 +346,16 @@ class LoginController: UIViewController {
     }
     
     func isValidPassword(password : String) -> Bool{
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[0-9])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
         return passwordTest.evaluate(with: password)
+    }
+    
+    func showAlertButtonTapped(sender: UIButton, message: String, check: Bool) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: check ? {
+            action in self.dismiss(animated: true, completion: nil)
+            } : nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

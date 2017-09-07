@@ -19,6 +19,7 @@
 		F0C6DBD51F571655004DC2C0 /* ProjectV3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6DBD41F571655004DC2C0 /* ProjectV3UITests.swift */; };
 		F0C6DBE41F571B26004DC2C0 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6DBE31F571B26004DC2C0 /* LoginController.swift */; };
 		F0C6DBE81F5AF95C004DC2C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0C6DBE71F5AF95C004DC2C0 /* GoogleService-Info.plist */; };
+		F0C6DBEF1F5D6D26004DC2C0 /* ForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6DBEE1F5D6D26004DC2C0 /* ForgotPasswordController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		F0C6DBD61F571655004DC2C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0C6DBE31F571B26004DC2C0 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		F0C6DBE71F5AF95C004DC2C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F0C6DBEE1F5D6D26004DC2C0 /* ForgotPasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 			children = (
 				F0C6DBE31F571B26004DC2C0 /* LoginController.swift */,
 				F0C6DBB61F571655004DC2C0 /* ViewController.swift */,
+				F0C6DBEE1F5D6D26004DC2C0 /* ForgotPasswordController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0C6DBB71F571655004DC2C0 /* ViewController.swift in Sources */,
+				F0C6DBEF1F5D6D26004DC2C0 /* ForgotPasswordController.swift in Sources */,
 				F0C6DBE41F571B26004DC2C0 /* LoginController.swift in Sources */,
 				F0C6DBB51F571655004DC2C0 /* AppDelegate.swift in Sources */,
 			);
