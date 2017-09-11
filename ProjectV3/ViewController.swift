@@ -29,7 +29,6 @@ class ViewController: UITableViewController {
         }
         
         let loginController = LoginController()
-        //UINavigationController(rootViewController: LoginController())
         present(loginController, animated: true, completion: nil)
     }
     

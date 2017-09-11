@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import Foundation
+import MessageUI
 
 class LoginController: UIViewController {
     
@@ -123,11 +125,6 @@ class LoginController: UIViewController {
     //function handle
     func handleForgotPassword() {
         let forgotPassController = ForgotPasswordController()
-        /*let transition = CATransition()
-        transition.duration = 0.25
-        transition.type = kCATransitionPush
-        transition.subtype = kCATransitionFromRight
-        self.view.window!.layer.add(transition, forKey: kCATransition)*/
         present(forgotPassController, animated: true, completion: nil)
     }
     
@@ -177,29 +174,29 @@ class LoginController: UIViewController {
                         return
                     }
                 Auth.auth().currentUser?.sendEmailVerification { (error) in
-                    self.showAlertButtonTapped(sender: UIButton.init(), message: "Please verify your email.", check: true)
+                    self.showAlertButtonTapped(sender: UIButton.init(), message: "Please verify your email before sign in.", check: false)
+                    
                 }
-                //after sent and verified still false
-                let user = Auth.auth().currentUser
-                if user?.isEmailVerified == true {
-                        guard let uid = user?.uid else {
+                if error == nil {
+                    guard let uid = user?.uid else {
+                        return
+                    }
+                    let ref = Database.database().reference(fromURL: "https://projectv3-182cb.firebaseio.com/")
+                    let values = ["name": name, "email": email]
+                    let userRef = ref.child("users").child((uid))
+                    userRef.updateChildValues(values, withCompletionBlock: { (err, ref) in
+                        if err != nil {
+                            print(err ?? "")
                             return
                         }
-                        let ref = Database.database().reference(fromURL: "https://projectv3-182cb.firebaseio.com/")
-                        let values = ["name": name, "email": email]
-                        let userRef = ref.child("users").child((uid))
-                        userRef.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                            if err != nil {
-                                print(err ?? "")
-                                return
-                            }
-                            print("Saved user successfully into Firebase Database")
-                            self.dismiss(animated: true, completion: nil)
-                        })
-                    }
-                })
+                        print("Saved user successfully into Firebase Database")
+                        
+                        //self.present(self, animated: true, completion: nil)
+                        //self.dismiss(animated: true, completion: nil)
+                    })
+                }
+            })
             }
-
         } else {
             self.showAlertButtonTapped(sender: UIButton.init(), message: "Your email or password is invalid.\nYour password must have:\n-8 or more than characters\n-At least one number and special character", check: false)
         }
@@ -214,23 +211,34 @@ class LoginController: UIViewController {
         let isPasswordValid = isValidPassword(password : password)
         if isEmailValid && isPasswordValid {
             print("Email address or Password is valid")
-            //let user = Auth.auth().currentUser
-            //if user?.isEmailVerified == true {
-                Auth.auth().signIn(withEmail: email, password: password, completion: {(user: User?, error) in
-                    if error != nil {
-                        print(error ?? "")
-                        return
+            Auth.auth().signIn(withEmail: email, password: password, completion: {(user: User?, error) in
+                if error != nil {
+                    print(error ?? "")
+                    return
+                }
+                Auth.auth().currentUser?.reload(completion: { (error) in
+                    if error == nil {
+                        if (Auth.auth().currentUser?.isEmailVerified)! {
+                            print("Login Successful")
+                            self.dismiss(animated: true, completion: nil)
+                        } else {
+                            do {
+                                try Auth.auth().signOut()
+                            } catch let logoutError {
+                                print(logoutError)
+                            }
+                            self.showAlertButtonTapped(sender: UIButton.init(), message: "Your email is not verify.", check: false)
+                        }
+                    } else {
+                        print(error?.localizedDescription)
                     }
-                    print("Login Successful")
-                    self.dismiss(animated: true, completion: nil)
                 })
-            //} else {
-                //print("Your email is not verify")
-            //}
+            })
         } else {
             self.showAlertButtonTapped(sender: UIButton.init(), message: "Your email or password is incorrect.", check: false)
         }
     }
+    
     
     func handleLoginRegister() {
         if loginRegisterSegmentControl.selectedSegmentIndex == 0 {
@@ -353,10 +361,26 @@ class LoginController: UIViewController {
     func showAlertButtonTapped(sender: UIButton, message: String, check: Bool) {
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: check ? {
-            action in self.dismiss(animated: true, completion: nil)
+                action in self.dismiss(animated: true, completion: nil)
             } : nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func otpGenerator() -> String {
+        let randomValue = Int(arc4random_uniform(10000))
+        let stringRandom = "\(randomValue)"
+        return stringRandom
+    }
+    
+    /*func sendEmailVerification() {
+        let email = emailTextField.text
+        let composeVC = MFMailComposeViewController()
+        composeVC.mailComposeDelegate = self as! MFMailComposeViewControllerDelegate
+        // Configure the fields of the interface.
+        composeVC.setToRecipients([email!])
+        composeVC.setSubject("Verify your email address!")
+        composeVC.setMessageBody("This email sent by ProjectV3.\nIt's looks like this is the first time. We need to verify this email. You may be asked to enter this security code: " + otpGenerator(), isHTML: false)
+    }*/
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -368,4 +392,5 @@ extension UIColor {
         self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
     }
 }
+
 
