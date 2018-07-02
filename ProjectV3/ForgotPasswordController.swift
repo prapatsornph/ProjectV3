@@ -52,10 +52,11 @@ class ForgotPasswordController: UIViewController {
     
     func setupNavBar() {
         let screenSize: CGRect = UIScreen.main.bounds
-        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 60))
-        navBar.backgroundColor = UIColor(r: 42, g: 94, b: 190)
+        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 150))
+        navBar.barTintColor = UIColor(r: 89, g: 148, b: 205)
+        navBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         let navItem = UINavigationItem(title: "Reset Password")
-        let backButton = UIBarButtonItem(title: "<Back", style: .plain, target: self, action: #selector(handleForgotPass))
+        let backButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleForgotPass))
         //let backButton = UIBarButtonItem(image : UIImage(named: "icon.png"), style: .plain, target: self, action: #selector(handleForgotPass))
         navItem.leftBarButtonItem = backButton
         navBar.setItems([navItem], animated: false)

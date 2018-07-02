@@ -10,6 +10,36 @@
 		651A15BB87F30DF9F47ED5BC /* Pods_ProjectV3Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68BA14D05F7CC10DA488F326 /* Pods_ProjectV3Tests.framework */; };
 		8702D27EBA07038C1CD7711C /* Pods_ProjectV3UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 594280FB4918B5D7E9807147 /* Pods_ProjectV3UITests.framework */; };
 		B5E50EAE1466230D55FA24DC /* Pods_ProjectV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA8FCE15E796BA776A07F1B /* Pods_ProjectV3.framework */; };
+		F036040B20698CB600C3C634 /* GTMOAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F036040A20698CB600C3C634 /* GTMOAuth2.framework */; };
+		F036040D20698CBB00C3C634 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F036040C20698CBB00C3C634 /* GTMSessionFetcher.framework */; };
+		F057EF8820698C65003D1FDD /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0053308203303630000381E /* GoogleToolboxForMac.framework */; };
+		F0A0D937206A4BB700582EFE /* GTMOAuth2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F036040A20698CB600C3C634 /* GTMOAuth2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F0A0D938206A4BBE00582EFE /* GoogleToolboxForMac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F0053308203303630000381E /* GoogleToolboxForMac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F0A0D939206A4BC400582EFE /* GTMSessionFetcher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F036040C20698CBB00C3C634 /* GTMSessionFetcher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F0A0D978209DA26C00582EFE /* SwiftOTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0A0D979209DA26C00582EFE /* SwiftOTP.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		F0A0D97A209DA28400582EFE /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0053306203303330000381E /* CryptoSwift.framework */; };
+		F0A0D97C209DA79C00582EFE /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A0D97B209DA79C00582EFE /* Generator.swift */; };
+		F0A0D97E209DA81C00582EFE /* HOTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A0D97D209DA81C00582EFE /* HOTP.swift */; };
+		F0A0D980209DA87F00582EFE /* OTPAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A0D97F209DA87F00582EFE /* OTPAlgorithm.swift */; };
+		F0A0D984209DA8D000582EFE /* TOTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A0D983209DA8D000582EFE /* TOTP.swift */; };
+		F0A0D986209F0BC900582EFE /* Base32.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A0D985209F0BC900582EFE /* Base32.swift */; };
+		F0A0D988209F0BF700582EFE /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A0D987209F0BF700582EFE /* StringExtension.swift */; };
+		F0A76E7620EA1BA4001504A1 /* Product3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A76E6620EA1BA1001504A1 /* Product3.swift */; };
+		F0A76E7720EA1BA4001504A1 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A76E6720EA1BA1001504A1 /* HomeController.swift */; };
+		F0A76E7820EA1BA4001504A1 /* MenuBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A76E6820EA1BA1001504A1 /* MenuBarController.swift */; };
+		F0A76E7920EA1BA4001504A1 /* Product4.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A76E6920EA1BA2001504A1 /* Product4.swift */; };
+		F0A76E7A20EA1BA4001504A1 /* Product0.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A76E6A20EA1BA2001504A1 /* Product0.swift */; };
+		F0A76E7B20EA1BA4001504A1 /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A76E6B20EA1BA2001504A1 /* MenuBar.swift */; };
+		F0A76E7C20EA1BA4001504A1 /* Product5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A76E6C20EA1BA2001504A1 /* Product5.swift */; };
+		F0A76E7D20EA1BA4001504A1 /* Product6.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A76E6D20EA1BA2001504A1 /* Product6.swift */; };
+		F0A76E7E20EA1BA4001504A1 /* Product1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A76E6E20EA1BA2001504A1 /* Product1.swift */; };
+		F0A76E7F20EA1BA4001504A1 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A76E6F20EA1BA2001504A1 /* ProductCell.swift */; };
+		F0A76E8020EA1BA4001504A1 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A76E7020EA1BA3001504A1 /* Product.swift */; };
+		F0A76E8120EA1BA4001504A1 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A76E7120EA1BA3001504A1 /* FeedCell.swift */; };
+		F0A76E8220EA1BA4001504A1 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A76E7220EA1BA3001504A1 /* SearchController.swift */; };
+		F0A76E8320EA1BA4001504A1 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A76E7320EA1BA3001504A1 /* Extension.swift */; };
+		F0A76E8420EA1BA4001504A1 /* Product2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A76E7420EA1BA3001504A1 /* Product2.swift */; };
+		F0A76E8520EA1BA4001504A1 /* AccountController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A76E7520EA1BA3001504A1 /* AccountController.swift */; };
 		F0C6DBB51F571655004DC2C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6DBB41F571655004DC2C0 /* AppDelegate.swift */; };
 		F0C6DBB71F571655004DC2C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6DBB61F571655004DC2C0 /* ViewController.swift */; };
 		F0C6DBBA1F571655004DC2C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0C6DBB81F571655004DC2C0 /* Main.storyboard */; };
@@ -20,6 +50,8 @@
 		F0C6DBE41F571B26004DC2C0 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6DBE31F571B26004DC2C0 /* LoginController.swift */; };
 		F0C6DBE81F5AF95C004DC2C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0C6DBE71F5AF95C004DC2C0 /* GoogleService-Info.plist */; };
 		F0C6DBEF1F5D6D26004DC2C0 /* ForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C6DBEE1F5D6D26004DC2C0 /* ForgotPasswordController.swift */; };
+		F0F08D17204922AE000C1D2B /* PaymentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F08D16204922AE000C1D2B /* PaymentController.swift */; };
+		F0F08D19204928BF000C1D2B /* OTPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F08D18204928BF000C1D2B /* OTPController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +71,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F033D1722048393000964728 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F0A0D939206A4BC400582EFE /* GTMSessionFetcher.framework in Embed Frameworks */,
+				F0A0D938206A4BBE00582EFE /* GoogleToolboxForMac.framework in Embed Frameworks */,
+				F0A0D937206A4BB700582EFE /* GTMOAuth2.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		15746CB48C3CC905C62C4977 /* Pods-ProjectV3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectV3.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectV3/Pods-ProjectV3.release.xcconfig"; sourceTree = "<group>"; };
 		1D73F696EEE921E1212B16D7 /* Pods-ProjectV3Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectV3Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectV3Tests/Pods-ProjectV3Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -49,6 +97,33 @@
 		79B11A2DF7582F0360476491 /* Pods-ProjectV3Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectV3Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectV3Tests/Pods-ProjectV3Tests.release.xcconfig"; sourceTree = "<group>"; };
 		A36C5EEFA4CD40E0BC6C6084 /* Pods-ProjectV3UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectV3UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectV3UITests/Pods-ProjectV3UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EAA8FCE15E796BA776A07F1B /* Pods_ProjectV3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectV3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0053306203303330000381E /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = "../../Library/Developer/Xcode/DerivedData/ProjectV3-hjezpiswtjgqvsdcodqnrzgcwbul/Build/Products/Debug-iphonesimulator/CryptoSwift/CryptoSwift.framework"; sourceTree = "<group>"; };
+		F0053308203303630000381E /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleToolboxForMac.framework; path = "../../Library/Developer/Xcode/DerivedData/ProjectV3-hjezpiswtjgqvsdcodqnrzgcwbul/Build/Products/Debug-iphonesimulator/GoogleToolboxForMac/GoogleToolboxForMac.framework"; sourceTree = "<group>"; };
+		F036040A20698CB600C3C634 /* GTMOAuth2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMOAuth2.framework; path = "../../Library/Developer/Xcode/DerivedData/ProjectV3-hjezpiswtjgqvsdcodqnrzgcwbul/Build/Products/Debug-iphonesimulator/GTMOAuth2/GTMOAuth2.framework"; sourceTree = "<group>"; };
+		F036040C20698CBB00C3C634 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = "../../Library/Developer/Xcode/DerivedData/ProjectV3-hjezpiswtjgqvsdcodqnrzgcwbul/Build/Products/Debug-iphonesimulator/GTMSessionFetcher/GTMSessionFetcher.framework"; sourceTree = "<group>"; };
+		F0A0D979209DA26C00582EFE /* SwiftOTP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftOTP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0A0D97B209DA79C00582EFE /* Generator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
+		F0A0D97D209DA81C00582EFE /* HOTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HOTP.swift; sourceTree = "<group>"; };
+		F0A0D97F209DA87F00582EFE /* OTPAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPAlgorithm.swift; sourceTree = "<group>"; };
+		F0A0D983209DA8D000582EFE /* TOTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOTP.swift; sourceTree = "<group>"; };
+		F0A0D985209F0BC900582EFE /* Base32.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base32.swift; sourceTree = "<group>"; };
+		F0A0D987209F0BF700582EFE /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		F0A76E6620EA1BA1001504A1 /* Product3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product3.swift; sourceTree = "<group>"; };
+		F0A76E6720EA1BA1001504A1 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		F0A76E6820EA1BA1001504A1 /* MenuBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarController.swift; sourceTree = "<group>"; };
+		F0A76E6920EA1BA2001504A1 /* Product4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product4.swift; sourceTree = "<group>"; };
+		F0A76E6A20EA1BA2001504A1 /* Product0.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product0.swift; sourceTree = "<group>"; };
+		F0A76E6B20EA1BA2001504A1 /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		F0A76E6C20EA1BA2001504A1 /* Product5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product5.swift; sourceTree = "<group>"; };
+		F0A76E6D20EA1BA2001504A1 /* Product6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product6.swift; sourceTree = "<group>"; };
+		F0A76E6E20EA1BA2001504A1 /* Product1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product1.swift; sourceTree = "<group>"; };
+		F0A76E6F20EA1BA2001504A1 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		F0A76E7020EA1BA3001504A1 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		F0A76E7120EA1BA3001504A1 /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		F0A76E7220EA1BA3001504A1 /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		F0A76E7320EA1BA3001504A1 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		F0A76E7420EA1BA3001504A1 /* Product2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product2.swift; sourceTree = "<group>"; };
+		F0A76E7520EA1BA3001504A1 /* AccountController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountController.swift; sourceTree = "<group>"; };
 		F0C6DBB11F571655004DC2C0 /* ProjectV3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectV3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0C6DBB41F571655004DC2C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0C6DBB61F571655004DC2C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +140,8 @@
 		F0C6DBE31F571B26004DC2C0 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		F0C6DBE71F5AF95C004DC2C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F0C6DBEE1F5D6D26004DC2C0 /* ForgotPasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController.swift; sourceTree = "<group>"; };
+		F0F08D16204922AE000C1D2B /* PaymentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentController.swift; sourceTree = "<group>"; };
+		F0F08D18204928BF000C1D2B /* OTPController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +149,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0A0D97A209DA28400582EFE /* CryptoSwift.framework in Frameworks */,
+				F0A0D978209DA26C00582EFE /* SwiftOTP.framework in Frameworks */,
+				F036040D20698CBB00C3C634 /* GTMSessionFetcher.framework in Frameworks */,
+				F036040B20698CB600C3C634 /* GTMOAuth2.framework in Frameworks */,
+				F057EF8820698C65003D1FDD /* GoogleToolboxForMac.framework in Frameworks */,
 				B5E50EAE1466230D55FA24DC /* Pods_ProjectV3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,6 +193,11 @@
 		1A018CF94A26AB69489FBED1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F0A0D979209DA26C00582EFE /* SwiftOTP.framework */,
+				F036040C20698CBB00C3C634 /* GTMSessionFetcher.framework */,
+				F036040A20698CB600C3C634 /* GTMOAuth2.framework */,
+				F0053308203303630000381E /* GoogleToolboxForMac.framework */,
+				F0053306203303330000381E /* CryptoSwift.framework */,
 				EAA8FCE15E796BA776A07F1B /* Pods_ProjectV3.framework */,
 				68BA14D05F7CC10DA488F326 /* Pods_ProjectV3Tests.framework */,
 				594280FB4918B5D7E9807147 /* Pods_ProjectV3UITests.framework */,
@@ -175,9 +262,33 @@
 		F0C6DBE21F571ACA004DC2C0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F0A76E7520EA1BA3001504A1 /* AccountController.swift */,
+				F0A76E7320EA1BA3001504A1 /* Extension.swift */,
+				F0A76E7120EA1BA3001504A1 /* FeedCell.swift */,
+				F0A76E6B20EA1BA2001504A1 /* MenuBar.swift */,
+				F0A76E7020EA1BA3001504A1 /* Product.swift */,
+				F0A76E6720EA1BA1001504A1 /* HomeController.swift */,
+				F0A76E6820EA1BA1001504A1 /* MenuBarController.swift */,
+				F0A76E6A20EA1BA2001504A1 /* Product0.swift */,
+				F0A76E6E20EA1BA2001504A1 /* Product1.swift */,
+				F0A76E7420EA1BA3001504A1 /* Product2.swift */,
+				F0A76E6620EA1BA1001504A1 /* Product3.swift */,
+				F0A76E6920EA1BA2001504A1 /* Product4.swift */,
+				F0A76E6C20EA1BA2001504A1 /* Product5.swift */,
+				F0A76E6D20EA1BA2001504A1 /* Product6.swift */,
+				F0A76E6F20EA1BA2001504A1 /* ProductCell.swift */,
+				F0A76E7220EA1BA3001504A1 /* SearchController.swift */,
 				F0C6DBE31F571B26004DC2C0 /* LoginController.swift */,
 				F0C6DBB61F571655004DC2C0 /* ViewController.swift */,
 				F0C6DBEE1F5D6D26004DC2C0 /* ForgotPasswordController.swift */,
+				F0F08D16204922AE000C1D2B /* PaymentController.swift */,
+				F0F08D18204928BF000C1D2B /* OTPController.swift */,
+				F0A0D97B209DA79C00582EFE /* Generator.swift */,
+				F0A0D97D209DA81C00582EFE /* HOTP.swift */,
+				F0A0D983209DA8D000582EFE /* TOTP.swift */,
+				F0A0D97F209DA87F00582EFE /* OTPAlgorithm.swift */,
+				F0A0D985209F0BC900582EFE /* Base32.swift */,
+				F0A0D987209F0BF700582EFE /* StringExtension.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -195,6 +306,7 @@
 				F0C6DBAF1F571655004DC2C0 /* Resources */,
 				CB8ED5365395E39BADCB79C6 /* [CP] Embed Pods Frameworks */,
 				1613DD0B1389D24B4BA448E8 /* [CP] Copy Pods Resources */,
+				F033D1722048393000964728 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -343,9 +455,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ProjectV3/Pods-ProjectV3-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -458,15 +577,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ProjectV3/Pods-ProjectV3-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftOTP/SwiftOTP.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftOTP.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -482,10 +607,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0A76E7D20EA1BA4001504A1 /* Product6.swift in Sources */,
+				F0A76E7820EA1BA4001504A1 /* MenuBarController.swift in Sources */,
+				F0A0D986209F0BC900582EFE /* Base32.swift in Sources */,
+				F0A0D97E209DA81C00582EFE /* HOTP.swift in Sources */,
 				F0C6DBB71F571655004DC2C0 /* ViewController.swift in Sources */,
+				F0A76E8320EA1BA4001504A1 /* Extension.swift in Sources */,
 				F0C6DBEF1F5D6D26004DC2C0 /* ForgotPasswordController.swift in Sources */,
+				F0A76E7A20EA1BA4001504A1 /* Product0.swift in Sources */,
+				F0A0D980209DA87F00582EFE /* OTPAlgorithm.swift in Sources */,
+				F0A76E7C20EA1BA4001504A1 /* Product5.swift in Sources */,
+				F0A0D984209DA8D000582EFE /* TOTP.swift in Sources */,
+				F0A76E8420EA1BA4001504A1 /* Product2.swift in Sources */,
+				F0A76E7F20EA1BA4001504A1 /* ProductCell.swift in Sources */,
+				F0F08D17204922AE000C1D2B /* PaymentController.swift in Sources */,
+				F0F08D19204928BF000C1D2B /* OTPController.swift in Sources */,
+				F0A76E8220EA1BA4001504A1 /* SearchController.swift in Sources */,
+				F0A76E7720EA1BA4001504A1 /* HomeController.swift in Sources */,
+				F0A76E8120EA1BA4001504A1 /* FeedCell.swift in Sources */,
+				F0A0D988209F0BF700582EFE /* StringExtension.swift in Sources */,
+				F0A76E7620EA1BA4001504A1 /* Product3.swift in Sources */,
+				F0A0D97C209DA79C00582EFE /* Generator.swift in Sources */,
+				F0A76E8520EA1BA4001504A1 /* AccountController.swift in Sources */,
+				F0A76E7E20EA1BA4001504A1 /* Product1.swift in Sources */,
+				F0A76E7B20EA1BA4001504A1 /* MenuBar.swift in Sources */,
 				F0C6DBE41F571B26004DC2C0 /* LoginController.swift in Sources */,
+				F0A76E7920EA1BA4001504A1 /* Product4.swift in Sources */,
 				F0C6DBB51F571655004DC2C0 /* AppDelegate.swift in Sources */,
+				F0A76E8020EA1BA4001504A1 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,7 +786,21 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6CC8ACCD7AD140AF816661C9 /* Pods-ProjectV3.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleToolboxForMac\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseAuth/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCore/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseDatabase/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseStorage/Frameworks\"",
+				);
 				INFOPLIST_FILE = ProjectV3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fon.ProjectV3;
@@ -650,7 +813,21 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 15746CB48C3CC905C62C4977 /* Pods-ProjectV3.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleToolboxForMac\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseAuth/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseCore/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseDatabase/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseInstanceID/Frameworks\"",
+					"\"${PODS_ROOT}/FirebaseStorage/Frameworks\"",
+				);
 				INFOPLIST_FILE = ProjectV3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.fon.ProjectV3;

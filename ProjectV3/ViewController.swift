@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import GoogleSignIn
 
 class ViewController: UITableViewController {
 
@@ -24,6 +25,7 @@ class ViewController: UITableViewController {
     func handleLogout() {
         do {
             try Auth.auth().signOut()
+            //GIDSignIn.sharedInstance().signOut()
         } catch let logoutError {
             print(logoutError)
         }

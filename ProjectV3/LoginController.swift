@@ -12,8 +12,9 @@ import FirebaseAuth
 import FirebaseDatabase
 import Foundation
 import MessageUI
+import GoogleSignIn
 
-class LoginController: UIViewController {
+class LoginController: UIViewController, GIDSignInUIDelegate {
     
     let inputsContainerView: UIView = {
         let view = UIView()
@@ -23,7 +24,7 @@ class LoginController: UIViewController {
         view.layer.masksToBounds = true
         return view
     }()
-    lazy var loginRegisterButton: UIButton = {
+    let loginRegisterButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(r: 42, g: 94, b: 190)
         button.setTitle("Sign In", for: .normal)
@@ -47,7 +48,6 @@ class LoginController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
     let emailTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Email Address"
@@ -106,6 +106,13 @@ class LoginController: UIViewController {
         segmentControl.translatesAutoresizingMaskIntoConstraints = false
         return segmentControl
     }()
+    //add Google sign in button
+    /*let googleButton: GIDSignInButton = {
+        let button = GIDSignInButton()
+        button.addTarget(self, action: #selector(handleSignInGoogle), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()*/
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,6 +121,9 @@ class LoginController: UIViewController {
         view.addSubview(loginRegisterButton)
         view.addSubview(loginRegisterSegmentControl)
         view.addSubview(forgotPasswordButton)
+        //view.addSubview(googleButton)
+        GIDSignIn.sharedInstance().uiDelegate = self
+        
         
         //UINavigationController = self
         
@@ -121,6 +131,7 @@ class LoginController: UIViewController {
         setupInputsContainerView()
         setupLoginRegisterButton()
         setupForgotPasswordButton()
+        
     }
     //function handle
     func handleForgotPassword() {
@@ -158,6 +169,10 @@ class LoginController: UIViewController {
         forgotPasswordButton.isHidden = loginRegisterSegmentControl.selectedSegmentIndex == 1
     }
     
+    /*func handleSignInGoogle() {
+        GIDSignIn.sharedInstance().signIn()
+        self.dismiss(animated: true, completion: nil)
+    }*/
     func handleRegister() {
         guard let email = emailTextField.text, let password = passwordTextField.text, let confirm = confirmPassTextField.text, let name = nameTextField.text else {
             print("Form is not valid")
@@ -175,7 +190,6 @@ class LoginController: UIViewController {
                     }
                 Auth.auth().currentUser?.sendEmailVerification { (error) in
                     self.showAlertButtonTapped(sender: UIButton.init(), message: "Please verify your email before sign in.", check: false)
-                    
                 }
                 if error == nil {
                     guard let uid = user?.uid else {
@@ -190,7 +204,6 @@ class LoginController: UIViewController {
                             return
                         }
                         print("Saved user successfully into Firebase Database")
-                        
                         //self.present(self, animated: true, completion: nil)
                         //self.dismiss(animated: true, completion: nil)
                     })
@@ -222,12 +235,16 @@ class LoginController: UIViewController {
                             print("Login Successful")
                             self.dismiss(animated: true, completion: nil)
                         } else {
+                            Auth.auth().currentUser?.sendEmailVerification { (error) in
+                                self.showAlertButtonTapped(sender: UIButton.init(), message: "Please verify your email before sign in.", check: false)
+                                print("sent completed")
                             do {
                                 try Auth.auth().signOut()
                             } catch let logoutError {
                                 print(logoutError)
                             }
-                            self.showAlertButtonTapped(sender: UIButton.init(), message: "Your email is not verify.", check: false)
+                            //self.showAlertButtonTapped(sender: UIButton.init(), message: "Your email is not verify.", check: false)
+                            }
                         }
                     } else {
                         print(error?.localizedDescription)
@@ -333,6 +350,13 @@ class LoginController: UIViewController {
         forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
         forgotPasswordButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
+    
+    /*func setupGoogleButton() {
+        googleButton.topAnchor.constraint(equalTo: forgotPasswordButton.bottomAnchor, constant: 10).isActive = true
+        googleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        googleButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -24).isActive = true
+        googleButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    }*/
     //function validation
     func isValidEmailAddress(emailAddressString: String) -> Bool {
         var returnValue = true
@@ -353,7 +377,7 @@ class LoginController: UIViewController {
         return  returnValue
     }
     
-    func isValidPassword(password : String) -> Bool{
+    func isValidPassword(password: String) -> Bool{
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[0-9])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
         return passwordTest.evaluate(with: password)
     }
@@ -366,11 +390,11 @@ class LoginController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func otpGenerator() -> String {
+    /*func otpGenerator() -> String {
         let randomValue = Int(arc4random_uniform(10000))
         let stringRandom = "\(randomValue)"
         return stringRandom
-    }
+    }*/
     
     /*func sendEmailVerification() {
         let email = emailTextField.text
@@ -392,5 +416,21 @@ extension UIColor {
         self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
     }
 }
+
+/*extension String {
+    func aesEncrypt(key: String, iv: String) throws -> String {
+        let data = self.data(using: .utf8)!
+        let encrypted = try! AES(key: key.bytes, blockMode: .CBC(iv: iv.bytes), padding: .pkcs7).encrypt([UInt8](data))
+        let encryptedData = Data(encrypted)
+        return encryptedData.base64EncodedString()
+    }
+    
+    func aesDecrypt(key: String, iv: String) throws -> String {
+        let data = Data(base64Encoded: self)!
+        let decrypted = try! AES(key: key.bytes, blockMode: .CBC(iv: iv.bytes), padding: .pkcs7).decrypt([UInt8](data))
+        let decryptedData = Data(decrypted)
+        return String(bytes: decryptedData.bytes, encoding: .utf8) ?? "Could not decrypt"
+    }
+}*/
 
 
