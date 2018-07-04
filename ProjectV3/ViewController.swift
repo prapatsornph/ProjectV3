@@ -10,23 +10,22 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import GoogleSignIn
 
 class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
-        
         if Auth.auth().currentUser?.uid == nil {
             perform(#selector(handleLogout), with: nil, afterDelay: 0)
-            self.handleLogout()
         }
     }
     
     func handleLogout() {
         do {
             try Auth.auth().signOut()
+            //GIDSignIn.sharedInstance().signOut()
         } catch let logoutError {
             print(logoutError)
         }
